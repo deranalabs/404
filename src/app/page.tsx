@@ -50,27 +50,42 @@ export default function Home() {
         </div>
 
         <button
-          className="lg:hidden p-2 text-primary hover:bg-white/5 rounded-sm transition-colors relative z-[60]"
+          className="lg:hidden inline-flex items-center justify-center w-11 h-11 text-primary border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/20 rounded-sm transition-all duration-200 relative z-[60]"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
         >
-          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </nav>
 
       <AnimatePresence mode="wait">
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 100 }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-[55] bg-dark flex flex-col pt-32 px-10 lg:hidden"
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.18 }}
+            className="fixed inset-0 z-[55] bg-dark/96 backdrop-blur-xl px-5 pt-20 pb-8 lg:hidden"
           >
-            <div className="flex flex-col gap-10 text-4xl font-black tracking-tighter text-light">
-              <a href="#validator" onClick={() => setIsMenuOpen(false)} className="text-primary hover:pl-4 transition-all uppercase underline decoration-primary decoration-4 underline-offset-8">Validator</a>
-              <a href="#live" onClick={() => setIsMenuOpen(false)} className="hover:text-primary hover:pl-4 transition-all uppercase text-white/60">Infrastructure</a>
-              <a href="#roadmap" onClick={() => setIsMenuOpen(false)} className="hover:text-primary hover:pl-4 transition-all uppercase text-white/60">Roadmap</a>
-              <a href="/docs" onClick={() => setIsMenuOpen(false)} className="hover:text-primary hover:pl-4 transition-all uppercase text-white/60">Docs</a>
+            <div className="border border-white/8 bg-white/[0.02] rounded-sm p-4 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.7)]">
+              <div className="flex flex-col">
+                <a href="#validator" onClick={() => setIsMenuOpen(false)} className="flex items-center justify-between py-4 border-b border-white/6 text-primary text-sm font-black uppercase tracking-[0.18em]">
+                  <span>Validator</span>
+                  <ArrowRight size={16} />
+                </a>
+                <a href="#live" onClick={() => setIsMenuOpen(false)} className="flex items-center justify-between py-4 border-b border-white/6 text-white/70 hover:text-primary transition-colors text-sm font-black uppercase tracking-[0.18em]">
+                  <span>Infrastructure</span>
+                  <ArrowRight size={16} />
+                </a>
+                <a href="#roadmap" onClick={() => setIsMenuOpen(false)} className="flex items-center justify-between py-4 border-b border-white/6 text-white/70 hover:text-primary transition-colors text-sm font-black uppercase tracking-[0.18em]">
+                  <span>Roadmap</span>
+                  <ArrowRight size={16} />
+                </a>
+                <a href="/docs" onClick={() => setIsMenuOpen(false)} className="flex items-center justify-between py-4 text-white/70 hover:text-primary transition-colors text-sm font-black uppercase tracking-[0.18em]">
+                  <span>Docs</span>
+                  <ArrowRight size={16} />
+                </a>
+              </div>
             </div>
           </motion.div>
         )}
