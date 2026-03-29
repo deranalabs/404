@@ -10,10 +10,29 @@ import Image from 'next/image';
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [stats, setStats] = useState({
+    uptime: "100.00%",
+    totalDelegation: "$4.2M+",
+    ecosystems: "3+",
+    latency: "400ms"
+  });
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
+    
+    // Fetch real stats from our new API
+    fetch('/api/stats')
+      .then(res => res.json())
+      .then(data => {
+        setStats({
+          uptime: data.uptime,
+          totalDelegation: data.totalDelegation,
+          ecosystems: "3+",
+          latency: data.latency
+        });
+      });
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -25,7 +44,7 @@ export default function Home() {
       
       {/* Navigation */}
       <nav className={`relative z-50 flex justify-between items-center px-6 md:px-12 py-4 transition-all duration-300 sticky top-0 ${scrolled ? 'bg-dark/90 backdrop-blur-xl border-b border-white/5' : 'bg-transparent'}`}>
-        <div className="flex items-center gap-3 group cursor-pointer">
+        <div className="flex items-center gap-4 group cursor-pointer">
           <div className="relative w-12 h-12 overflow-hidden rounded-sm shadow-[0_0_20px_rgba(3,251,173,0.2)]">
             <Image 
               src="/logo.png" 
@@ -83,11 +102,11 @@ export default function Home() {
             exit={{ opacity: 0, y: -20 }}
             className="fixed inset-0 z-40 bg-dark/95 backdrop-blur-2xl pt-24 px-8 lg:hidden flex flex-col justify-between pb-12"
           >
-            <div className="flex flex-col gap-10 text-4xl font-black italic tracking-tighter">
-              <a href="#hub" onClick={() => setIsMenuOpen(false)} className="text-primary hover:pl-4 transition-all">VALIDATOR</a>
-              <a href="#hub" onClick={() => setIsMenuOpen(false)} className="text-light hover:pl-4 transition-all">RPC NODES</a>
-              <a href="#hub" onClick={() => setIsMenuOpen(false)} className="text-light hover:pl-4 transition-all">INDEXERS</a>
-              <a href="#hub" onClick={() => setIsMenuOpen(false)} className="text-light hover:pl-4 transition-all">INFRASTRUCTURE</a>
+            <div className="flex flex-col gap-10 text-4xl font-black italic tracking-tighter text-light">
+              <a href="#hub" onClick={() => setIsMenuOpen(false)} className="text-primary hover:pl-4 transition-all uppercase">Validator</a>
+              <a href="#hub" onClick={() => setIsMenuOpen(false)} className="hover:text-primary hover:pl-4 transition-all uppercase">RPC Nodes</a>
+              <a href="#hub" onClick={() => setIsMenuOpen(false)} className="hover:text-primary hover:pl-4 transition-all uppercase">Indexers</a>
+              <a href="#hub" onClick={() => setIsMenuOpen(false)} className="hover:text-primary hover:pl-4 transition-all uppercase">Infrastructure</a>
             </div>
             <div className="space-y-6">
                <div className="h-[1px] bg-white/10 w-full" />
@@ -114,7 +133,7 @@ export default function Home() {
               Mainnet Ready Infrastructure
             </div>
             <h1 className="text-6xl sm:text-7xl md:text-9xl font-black tracking-tighter leading-[0.85] mb-10 italic uppercase text-light">
-              THE <span className="text-primary not-italic">TITAN</span> <br />
+              THE <span className="text-primary not-italic text-glow">TITAN</span> <br />
               LAYER
             </h1>
             <p className="text-lg md:text-xl text-white/40 leading-relaxed mb-12 max-w-xl mx-auto lg:mx-0 font-light">
@@ -138,7 +157,6 @@ export default function Home() {
             className="hidden lg:flex flex-1 justify-center relative"
           >
             <div className="relative w-[400px] h-[400px]">
-               {/* Animated Rings */}
                <div className="absolute inset-0 border-2 border-primary/20 rounded-full animate-[spin_10s_linear_infinite]" />
                <div className="absolute inset-4 border border-dashed border-white/10 rounded-full animate-[spin_20s_linear_infinite_reverse]" />
                <div className="absolute inset-0 flex items-center justify-center">
@@ -146,7 +164,6 @@ export default function Home() {
                   <Cpu size={140} className="text-primary opacity-80" />
                </div>
                
-               {/* Orbital Labels */}
                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full pb-8">
                   <span className="text-[10px] font-bold text-primary uppercase tracking-[0.3em]">Reliability</span>
                </div>
@@ -160,23 +177,23 @@ export default function Home() {
 
       {/* Stats Section */}
       <section className="relative z-10 px-6 md:px-8 py-12 max-w-7xl mx-auto border-y border-white/5 bg-white/[0.01]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 text-center lg:text-left">
           <StatCard 
             icon={<Zap size={22} />}
             label="Average Uptime"
-            value="100.00%"
+            value={stats.uptime}
             sub="ZERO DOWNTIME OPERATIONS"
           />
           <StatCard 
             icon={<Activity size={22} />}
             label="Network Weight"
-            value="$4.2M+"
+            value={stats.totalDelegation}
             sub="COMMUNITY DELEGATED"
           />
           <StatCard 
             icon={<Globe size={22} />}
             label="Nodes Active"
-            value="12"
+            value={stats.ecosystems}
             sub="GLOBAL CLUSTER SITES"
           />
         </div>
@@ -198,7 +215,7 @@ export default function Home() {
           <div className="max-w-sm">
              <div className="flex items-center gap-4 mb-8">
                 <div className="relative w-12 h-12 bg-white rounded-sm overflow-hidden shadow-xl">
-                  <Image src="/logo.png" alt="404Labs Logo" fill className="object-cover" />
+                   <Image src="/logo.png" alt="404Labs Logo" fill className="object-cover" />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-2xl font-black tracking-tighter uppercase text-light">NotFound<span className="text-primary italic">Labs</span></span>
@@ -218,8 +235,8 @@ export default function Home() {
             <div className="flex flex-col gap-6">
               <span className="text-primary text-[10px] font-black">Socials</span>
               <a href="https://x.com/NotFoundLabs" className="hover:text-primary transition-colors">Twitter / X</a>
-              <a href="#" className="hover:text-primary transition-colors">Discord</a>
-              <a href="#" className="hover:text-primary transition-colors">Github</a>
+              <a href="#" className="hover:text-primary transition-colors border-b border-transparent hover:border-primary w-fit">Discord</a>
+              <a href="#" className="hover:text-primary transition-colors border-b border-transparent hover:border-primary w-fit">Github</a>
             </div>
             <div className="flex flex-col gap-6">
               <span className="text-primary text-[10px] font-black">Portal</span>
@@ -250,7 +267,7 @@ function StatCard({ icon, label, value, sub }: { icon: React.ReactNode, label: s
         </div>
         <span className="text-[10px] uppercase tracking-[0.3em] text-primary/60 font-black">{label}</span>
       </div>
-      <div className="text-5xl font-black italic tracking-tighter text-light mb-2 group-hover:text-primary transition-colors">{value}</div>
+      <div className="text-5xl font-black italic tracking-tighter text-light mb-2 group-hover:text-primary transition-colors uppercase leading-none">{value}</div>
       <div className="text-[10px] text-white/20 font-bold uppercase tracking-[0.2em]">{sub}</div>
     </motion.div>
   );
