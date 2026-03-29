@@ -11,7 +11,7 @@ const queryClient = new QueryClient();
 
 const config = getDefaultConfig({
   appName: '404Labs',
-  projectId: 'YOUR_PROJECT_ID', // Lu butuh WalletConnect Project ID nnti bos
+  projectId: 'YOUR_PROJECT_ID', 
   chains: [monadTestnet, mainnet],
   transports: {
     [monadTestnet.id]: http(),
@@ -25,8 +25,8 @@ export function Web3Provider({ children }: { children: React.ReactNode }) {
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider theme={darkTheme({
-          accentColor: '#A0055D',
-          accentColorForeground: 'white',
+          accentColor: '#03fbad', // FIXED: Sync with brand neon green
+          accentColorForeground: '#0e0e0d', // Dark text for high contrast
           borderRadius: 'small',
           fontStack: 'system',
           overlayBlur: 'small',

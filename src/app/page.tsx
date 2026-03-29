@@ -26,13 +26,15 @@ export default function Home() {
     fetch('/api/stats')
       .then(res => res.json())
       .then(data => {
-        setStats({
-          uptime: data.uptime,
-          votingPower: data.votingPower.replace('000,000', 'M'),
-          estimatedAPY: data.estimatedAPY,
-          commission: data.commission,
-          delegators: data.delegators
-        });
+        if (data && !data.error) {
+          setStats({
+            uptime: data.uptime,
+            votingPower: data.votingPower.replace('000,000', 'M'),
+            estimatedAPY: data.estimatedAPY,
+            commission: data.commission,
+            delegators: data.delegators
+          });
+        }
       });
 
     return () => window.removeEventListener('scroll', handleScroll);
@@ -56,7 +58,7 @@ export default function Home() {
             />
           </div>
           <div className="flex flex-col leading-none">
-            <span className="text-xl font-black tracking-tighter uppercase text-glow">NotFound<span className="text-primary italic">Labs</span></span>
+            <span className="text-xl font-black tracking-tighter uppercase text-glow leading-none">NotFound<span className="text-primary italic">Labs</span></span>
             <span className="text-[9px] uppercase tracking-[0.4em] text-white/40 font-bold">Systems Group</span>
           </div>
         </div>
@@ -84,14 +86,38 @@ export default function Home() {
           <div className="hidden sm:block scale-90 origin-right">
             <ConnectButton showBalance={false} chainStatus="none" accountStatus="address" />
           </div>
+          
           <button 
-            className="lg:hidden p-2 text-primary hover:bg-white/5 rounded-sm transition-colors"
+            className="lg:hidden p-2 text-primary hover:bg-white/5 rounded-sm transition-colors relative z-[60]"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </nav>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence mode="wait">
+        {isMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 100 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            className="fixed inset-0 z-[55] bg-dark flex flex-col pt-32 px-10 lg:hidden"
+          >
+            <div className="flex flex-col gap-10 text-4xl font-black italic tracking-tighter text-light">
+              <a href="#hub" onClick={() => setIsMenuOpen(false)} className="text-primary hover:pl-4 transition-all uppercase">Validator</a>
+              <a href="#hub" onClick={() => setIsMenuOpen(false)} className="hover:text-primary hover:pl-4 transition-all uppercase text-white/60">RPC Nodes</a>
+              <a href="#hub" onClick={() => setIsMenuOpen(false)} className="hover:text-primary hover:pl-4 transition-all uppercase text-white/60">Indexers</a>
+              <a href="#hub" onClick={() => setIsMenuOpen(false)} className="hover:text-primary hover:pl-4 transition-all uppercase text-white/60">Infrastructure</a>
+            </div>
+            <div className="mt-auto mb-16 space-y-6 pt-10 border-t border-white/5">
+               <ConnectButton />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Hero Section */}
       <section className="relative z-10 px-6 md:px-8 pt-16 md:pt-28 pb-16 md:pb-24 max-w-7xl mx-auto">
@@ -133,12 +159,13 @@ export default function Home() {
             className="hidden lg:flex flex-1 justify-center relative"
           >
             <div className="relative w-[400px] h-[400px]">
-               <div className="absolute inset-0 border-2 border-primary/20 rounded-full animate-[spin{10s}linear infinite]" />
-               <div className="absolute inset-4 border border-dashed border-white/10 rounded-full animate-[spin{20s}linear infinite reverse]" />
+               <div className="absolute inset-0 border-2 border-primary/20 rounded-full animate-[spin_10s_linear_infinite]" />
+               <div className="absolute inset-4 border border-dashed border-white/10 rounded-full animate-[spin_20s_linear_infinite_reverse]" />
                <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-48 h-48 bg-primary/20 rounded-full blur-[80px] animate-pulse" />
                   <Cpu size={140} className="text-primary opacity-80" />
                </div>
+               
                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full pb-8 text-center">
                   <span className="text-[10px] font-bold text-primary uppercase tracking-[0.3em]">Scalability</span>
                </div>
@@ -202,11 +229,11 @@ export default function Home() {
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-20">
           <div className="max-w-sm">
              <div className="flex items-center gap-4 mb-8">
-                <div className="relative w-12 h-12 bg-white rounded-sm overflow-hidden shadow-xl">
+                <div className="relative w-12 h-12 bg-white rounded-sm overflow-hidden shadow-xl text-dark">
                    <Image src="/logo.png" alt="404Labs Logo" fill className="object-cover" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-2xl font-black tracking-tighter uppercase text-light text-glow">NotFound<span className="text-primary italic">Labs</span></span>
+                  <span className="text-2xl font-black tracking-tighter uppercase text-light text-glow leading-none">NotFound<span className="text-primary italic">Labs</span></span>
                   <span className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Est. 2026</span>
                 </div>
               </div>
@@ -228,9 +255,9 @@ export default function Home() {
             </div>
             <div className="flex flex-col gap-6">
               <span className="text-primary text-[10px] font-black">Portal</span>
-              <a href="#" className="hover:text-primary transition-colors">Status</a>
-              <a href="#" className="hover:text-primary transition-colors">Documentation</a>
-              <a href="#" className="hover:text-primary transition-colors">Privacy</a>
+              <a href="#" className="hover:text-primary transition-colors border-b border-transparent hover:border-primary w-fit">Status</a>
+              <a href="#" className="hover:text-primary transition-colors border-b border-transparent hover:border-primary w-fit">Documentation</a>
+              <a href="#" className="hover:text-primary transition-colors border-b border-transparent hover:border-primary w-fit">Privacy</a>
             </div>
           </div>
         </div>
