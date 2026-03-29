@@ -18,19 +18,33 @@
 body {
   color: #fefefe;
   background-color: #0e0e0d;
+  -webkit-font-smoothing: antialiased;
 }
 
+/* Custom Utilities for Neon Vibe */
 @utility bg-grid-pattern {
   background-image: radial-gradient(circle, #222 1px, transparent 1px);
   background-size: 30px 30px;
 }
 
 @utility primary-glow {
-  box-shadow: 0 0 20px rgba(3, 251, 173, 0.2);
+  box-shadow: 0 0 15px rgba(3, 251, 173, 0.3);
 }
 
-@utility text-gradient {
-  background: linear-gradient(to right, #fefefe, #03fbad);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+@utility text-glow {
+  text-shadow: 0 0 10px rgba(3, 251, 173, 0.5);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #0e0e0d;
+}
+::-webkit-scrollbar-thumb {
+  background: #222;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #03fbad;
 }
