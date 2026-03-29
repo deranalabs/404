@@ -14,8 +14,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "404Labs | The Foundational Infrastructure",
-  description: "Enterprise-grade Validator, RPC, and Indexer operations.",
+  title: "404Labs | High-performance community validator & Web3 infrastructure",
+  description: "404Labs operates high-performance validator infrastructure and reliable full nodes supporting decentralized networks.",
+  icons: {
+    icon: "/IMG_3653.PNG",
+    shortcut: "/IMG_3653.PNG",
+    apple: "/IMG_3653.PNG",
+  },
 };
 
 export default function RootLayout({
