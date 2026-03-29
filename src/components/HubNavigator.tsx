@@ -6,7 +6,7 @@ import { Shield, Terminal, CheckCircle2, Clock3 } from 'lucide-react';
 const liveItems = [
   {
     title: 'Validator Operations',
-    desc: 'High-performance validator operations running on Monad testnet.',
+    desc: 'High-performance validator operations with current public proof on Monad testnet.'
     status: 'LIVE',
     stats: 'Monad Testnet',
     icon: <Shield className="text-primary" />,
@@ -29,7 +29,7 @@ export default function HubNavigator() {
   return (
     <section id="hub" className="px-5 md:px-8 py-12 md:py-16 max-w-7xl mx-auto">
       <div className="mb-8 md:mb-10">
-        <h2 className="text-[10px] uppercase tracking-[0.2em] text-primary font-bold mb-2">What’s live now</h2>
+        <h2 className="text-[10px] uppercase tracking-[0.2em] text-primary font-bold mb-2">Live capabilities</h2>
         <p className="text-2xl md:text-3xl font-black tracking-tighter text-light uppercase">Current Operations</p>
       </div>
 

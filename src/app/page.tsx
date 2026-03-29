@@ -104,13 +104,13 @@ export default function Home() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
               </span>
-              Monad Testnet Validator
+              Validator • Nodes • Execution
             </div>
             <h1 className="text-3xl sm:text-5xl md:text-6xl xl:text-7xl font-black tracking-tighter leading-[0.95] mb-5 uppercase text-light">
               High-performance community validator <span className="text-primary text-glow">&</span> Web3 infrastructure
             </h1>
             <p className="text-base md:text-lg text-white/40 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0 font-light">
-              404Labs operates reliable validator infrastructure and Monad full nodes supporting decentralized networks.
+              404Labs builds reliable Web3 infrastructure, validator systems, node operations, and AI-agent execution layers for decentralized networks.
             </p>
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3">
               <a href="https://testnet.monadvision.com/validator/0x756D4C468F6131d7896AEC8a897865Ae92412b77?tab=Proposed+Blocks" target="_blank" rel="noreferrer" className="px-5 md:px-6 py-3 bg-primary text-dark text-sm font-black rounded-sm border border-primary/70 hover:brightness-110 hover:-translate-y-0.5 transition-all duration-200 inline-flex items-center justify-center gap-2.5 uppercase tracking-[0.14em] shadow-[0_10px_24px_-12px_rgba(3,251,173,0.45)] group">
@@ -148,10 +148,10 @@ export default function Home() {
 
       <section id="validator" className="relative z-10 px-5 md:px-8 py-10 md:py-12 max-w-7xl mx-auto border-y border-white/5 bg-white/[0.01]">
         <div className="mb-10 max-w-3xl">
-          <span className="text-[10px] font-bold text-primary uppercase tracking-[0.4em] mb-2 block">Built for reliability on Monad testnet</span>
+          <span className="text-[10px] font-bold text-primary uppercase tracking-[0.4em] mb-2 block">Current network proof</span>
           <h2 className="text-2xl md:text-3xl font-black tracking-tighter text-light uppercase mb-3">Validator proof</h2>
           <p className="text-white/40 leading-relaxed font-light">
-            404Labs is actively operating validator infrastructure and full nodes on Monad testnet, focused on reliable participation, network support, and long-term infrastructure credibility.
+            404Labs is actively operating validator infrastructure and full nodes, with current public proof on Monad testnet and a broader focus on long-term infrastructure credibility.
           </p>
         </div>
         <div>
@@ -234,14 +234,14 @@ export default function Home() {
             </div>
             <div className="flex flex-col gap-4">
               <span className="text-primary text-[10px] font-black">Network</span>
-              <span className="text-white/30">Monad Testnet</span>
+              <span className="text-white/30">Current Proof: Monad Testnet</span>
               <span className="text-white/30">Validator + Full Node</span>
             </div>
           </div>
         </div>
         <div className="max-w-7xl mx-auto mt-12 pt-6 border-t border-white/5 text-[10px] font-black uppercase tracking-[0.28em] text-white/10 flex flex-col md:flex-row justify-between gap-3">
           <span>© 2026 404Labs</span>
-          <span className="uppercase tracking-[0.12em]">Built on Monad testnet</span>
+          <span className="uppercase tracking-[0.12em]">Currently active on Monad testnet</span>
         </div>
       </footer>
     </main>
