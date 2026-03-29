@@ -34,10 +34,10 @@ export default function DocsPage() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 mb-12">
-            <div className="px-6 py-3.5 bg-white/[0.03] border border-white/10 text-white/50 text-sm md:text-base font-black rounded-sm inline-flex items-center justify-center gap-3 uppercase tracking-tighter w-fit cursor-not-allowed">
+            <div className="px-5 py-3 bg-white/[0.03] border border-white/10 text-white/50 text-sm font-black rounded-sm inline-flex items-center justify-center gap-2.5 uppercase tracking-[0.14em] w-fit cursor-not-allowed shadow-[0_10px_24px_-16px_rgba(255,255,255,0.18)]">
               GitBook coming soon <ArrowUpRight size={18} />
             </div>
-            <a href="https://testnet.monadvision.com/validator/0x756D4C468F6131d7896AEC8a897865Ae92412b77?tab=Proposed+Blocks" target="_blank" rel="noreferrer" className="px-6 py-3.5 border border-white/10 text-light text-sm md:text-base font-black rounded-sm hover:bg-white/5 transition-all inline-flex items-center justify-center gap-3 uppercase tracking-tighter w-fit">
+            <a href="https://testnet.monadvision.com/validator/0x756D4C468F6131d7896AEC8a897865Ae92412b77?tab=Proposed+Blocks" target="_blank" rel="noreferrer" className="px-5 py-3 border border-white/12 bg-white/[0.02] text-light text-sm font-black rounded-sm hover:bg-white/[0.05] hover:border-white/20 hover:-translate-y-0.5 transition-all duration-200 inline-flex items-center justify-center gap-2.5 uppercase tracking-[0.14em] w-fit shadow-[0_10px_24px_-16px_rgba(255,255,255,0.18)]">
               View Validator
             </a>
           </div>

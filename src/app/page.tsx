@@ -98,10 +98,10 @@ export default function Home() {
               404Labs operates reliable validator infrastructure and Monad full nodes supporting decentralized networks.
             </p>
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3">
-              <a href="https://testnet.monadvision.com/validator/0x756D4C468F6131d7896AEC8a897865Ae92412b77?tab=Proposed+Blocks" target="_blank" rel="noreferrer" className="px-7 md:px-8 py-4 bg-primary text-dark text-sm md:text-base font-black rounded-sm hover:brightness-110 transition-all flex items-center justify-center gap-3 uppercase tracking-tighter shadow-[0_15px_35px_-10px_rgba(3,251,173,0.4)] group">
+              <a href="https://testnet.monadvision.com/validator/0x756D4C468F6131d7896AEC8a897865Ae92412b77?tab=Proposed+Blocks" target="_blank" rel="noreferrer" className="px-5 md:px-6 py-3 bg-primary text-dark text-sm font-black rounded-sm border border-primary/70 hover:brightness-110 hover:-translate-y-0.5 transition-all duration-200 inline-flex items-center justify-center gap-2.5 uppercase tracking-[0.14em] shadow-[0_10px_24px_-12px_rgba(3,251,173,0.45)] group">
                 View Validator <ArrowRight className="group-hover:translate-x-1 transition-transform" />
               </a>
-              <a href="/docs" className="px-7 md:px-8 py-4 border border-white/10 text-light text-sm md:text-base font-black rounded-sm hover:bg-white/5 transition-all flex items-center justify-center gap-3 uppercase tracking-tighter">
+              <a href="/docs" className="px-5 md:px-6 py-3 border border-white/12 bg-white/[0.02] text-light text-sm font-black rounded-sm hover:bg-white/[0.05] hover:border-white/20 hover:-translate-y-0.5 transition-all duration-200 inline-flex items-center justify-center gap-2.5 uppercase tracking-[0.14em] shadow-[0_10px_24px_-16px_rgba(255,255,255,0.18)]">
                 <Terminal size={20} /> Read Docs
               </a>
             </div>
@@ -139,12 +139,9 @@ export default function Home() {
             404Labs is actively operating validator infrastructure and full nodes on Monad testnet, focused on reliable participation, network support, and long-term infrastructure credibility.
           </p>
         </div>
-        <div className="flex flex-col md:flex-row gap-4">
-          <a href="https://testnet.monadvision.com/validator/0x756D4C468F6131d7896AEC8a897865Ae92412b77?tab=Proposed+Blocks" target="_blank" rel="noreferrer" className="px-8 py-4 bg-primary text-dark font-black rounded-sm hover:brightness-110 transition-all inline-flex items-center justify-center gap-3 uppercase tracking-tighter w-fit">
-            View Validator <ArrowRight size={18} />
-          </a>
-          <a href="/docs" className="px-8 py-4 border border-white/10 text-light font-black rounded-sm hover:bg-white/5 transition-all inline-flex items-center justify-center gap-3 uppercase tracking-tighter w-fit">
-            <Terminal size={18} /> Read Docs
+        <div>
+          <a href="https://testnet.monadvision.com/validator/0x756D4C468F6131d7896AEC8a897865Ae92412b77?tab=Proposed+Blocks" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-4 py-2.5 border border-primary/20 bg-primary/[0.06] rounded-sm text-[11px] font-black uppercase tracking-[0.16em] text-primary hover:bg-primary/[0.10] hover:border-primary/35 transition-all duration-200">
+            Open validator on Monad Vision <ArrowRight size={16} />
           </a>
         </div>
       </section>
@@ -165,42 +162,42 @@ export default function Home() {
         </p>
       </section>
 
-      <footer className="relative z-10 px-5 md:px-8 pt-14 md:pt-16 pb-10 border-t border-white/5 bg-black">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-12">
-          <div className="max-w-md">
-            <div className="flex items-center gap-4 mb-8">
+      <footer className="relative z-10 px-5 md:px-8 pt-12 md:pt-14 pb-8 border-t border-white/5 bg-black">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-10 lg:gap-16">
+          <div className="max-w-sm">
+            <div className="flex items-center gap-4 mb-6">
               <div className="relative w-12 h-12 bg-white rounded-sm overflow-hidden shadow-xl text-dark">
                 <Image src="/IMG_3653.PNG" alt="404Labs Logo" fill className="object-cover" />
               </div>
               <div className="flex flex-col">
-                <span className="text-2xl font-black tracking-tighter uppercase text-light text-glow leading-none">404<span className="text-primary">Labs</span></span>
+                <span className="text-2xl font-black tracking-tighter uppercase text-light leading-none">404<span className="text-primary">Labs</span></span>
                 <span className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Community Validator</span>
               </div>
             </div>
-            <p className="text-white/30 font-light text-base leading-relaxed">High-performance community validator & Web3 infrastructure.</p>
-            <p className="text-white/20 font-light text-sm leading-relaxed mt-3">Operated by 404Agency.</p>
+            <p className="text-white/30 font-light text-sm md:text-base leading-relaxed">High-performance community validator & Web3 infrastructure.</p>
+            <p className="text-white/20 font-light text-sm leading-relaxed mt-2">Operated by 404Agency.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-[11px] font-bold uppercase tracking-[0.25em] text-white/40">
-            <div className="flex flex-col gap-5">
-              <span className="text-primary text-[10px] font-black">Validator</span>
-              <a href="https://testnet.monadvision.com/validator/0x756D4C468F6131d7896AEC8a897865Ae92412b77?tab=Proposed+Blocks" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">View Validator</a>
-              <a href="/docs" className="hover:text-primary transition-colors">Read Docs</a>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-10 text-[11px] font-bold uppercase tracking-[0.2em] text-white/40">
+            <div className="flex flex-col gap-4">
+              <span className="text-primary text-[10px] font-black">Navigation</span>
+              <a href="https://testnet.monadvision.com/validator/0x756D4C468F6131d7896AEC8a897865Ae92412b77?tab=Proposed+Blocks" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">Validator</a>
+              <a href="/docs" className="hover:text-primary transition-colors">Docs</a>
             </div>
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-4">
               <span className="text-primary text-[10px] font-black">Social</span>
               <a href="https://x.com/NotFoundLabs" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">404Labs on X</a>
             </div>
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-4">
               <span className="text-primary text-[10px] font-black">Network</span>
               <span className="text-white/30">Monad Testnet</span>
               <span className="text-white/30">Validator + Full Node</span>
             </div>
           </div>
         </div>
-        <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 text-[10px] font-black uppercase tracking-[0.4em] text-white/10 flex flex-col md:flex-row justify-between gap-4">
-          <span>© 2026 404Labs. High-performance community validator infrastructure.</span>
-          <span className="uppercase tracking-[0.1em]">Built on Monad testnet</span>
+        <div className="max-w-7xl mx-auto mt-12 pt-6 border-t border-white/5 text-[10px] font-black uppercase tracking-[0.28em] text-white/10 flex flex-col md:flex-row justify-between gap-3">
+          <span>© 2026 404Labs</span>
+          <span className="uppercase tracking-[0.12em]">Built on Monad testnet</span>
         </div>
       </footer>
     </main>
