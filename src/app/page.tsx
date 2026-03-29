@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { Activity, Database, Shield, Zap, Menu, X, Terminal, Globe, Cpu, ArrowRight } from 'lucide-react';
+import { Activity, Database, Shield, Zap, Menu, X, Terminal, Globe, Cpu, ArrowRight, TrendingUp, Users, Percent } from 'lucide-react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import HubNavigator from '@/components/HubNavigator';
 import NetworkHealth from '@/components/NetworkHealth';
@@ -13,9 +13,10 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [stats, setStats] = useState({
     uptime: "100.00%",
-    totalDelegation: "$4.2M+",
-    ecosystems: "3+",
-    latency: "400ms"
+    votingPower: "11M MON",
+    estimatedAPY: "80.63%",
+    commission: "0%",
+    delegators: 2
   });
 
   useEffect(() => {
@@ -27,9 +28,10 @@ export default function Home() {
       .then(data => {
         setStats({
           uptime: data.uptime,
-          totalDelegation: data.totalDelegation,
-          ecosystems: "3+",
-          latency: data.latency
+          votingPower: data.votingPower.replace('000,000', 'M'),
+          estimatedAPY: data.estimatedAPY,
+          commission: data.commission,
+          delegators: data.delegators
         });
       });
 
@@ -91,29 +93,6 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 bg-dark/95 backdrop-blur-2xl pt-24 px-8 lg:hidden flex flex-col justify-between pb-12"
-          >
-            <div className="flex flex-col gap-10 text-4xl font-black italic tracking-tighter text-light">
-              <a href="#hub" onClick={() => setIsMenuOpen(false)} className="text-primary hover:pl-4 transition-all uppercase">Validator</a>
-              <a href="#hub" onClick={() => setIsMenuOpen(false)} className="hover:text-primary hover:pl-4 transition-all uppercase">RPC Nodes</a>
-              <a href="#hub" onClick={() => setIsMenuOpen(false)} className="hover:text-primary hover:pl-4 transition-all uppercase">Indexers</a>
-              <a href="#hub" onClick={() => setIsMenuOpen(false)} className="hover:text-primary hover:pl-4 transition-all uppercase">Infrastructure</a>
-            </div>
-            <div className="space-y-6">
-               <div className="h-[1px] bg-white/10 w-full" />
-               <ConnectButton />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* Hero Section */}
       <section className="relative z-10 px-6 md:px-8 pt-16 md:pt-28 pb-16 md:pb-24 max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
@@ -154,8 +133,8 @@ export default function Home() {
             className="hidden lg:flex flex-1 justify-center relative"
           >
             <div className="relative w-[400px] h-[400px]">
-               <div className="absolute inset-0 border-2 border-primary/20 rounded-full animate-[spin_10s_linear_infinite]" />
-               <div className="absolute inset-4 border border-dashed border-white/10 rounded-full animate-[spin_20s_linear_infinite_reverse]" />
+               <div className="absolute inset-0 border-2 border-primary/20 rounded-full animate-[spin{10s}linear infinite]" />
+               <div className="absolute inset-4 border border-dashed border-white/10 rounded-full animate-[spin{20s}linear infinite reverse]" />
                <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-48 h-48 bg-primary/20 rounded-full blur-[80px] animate-pulse" />
                   <Cpu size={140} className="text-primary opacity-80" />
@@ -171,26 +150,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Live Validator Stats Section */}
       <section className="relative z-10 px-6 md:px-8 py-12 max-w-7xl mx-auto border-y border-white/5 bg-white/[0.01]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 text-center lg:text-left">
+        <div className="mb-10 text-center lg:text-left">
+           <span className="text-[10px] font-bold text-primary uppercase tracking-[0.4em] mb-2 block">Live Validator Status</span>
+           <h2 className="text-3xl font-black italic tracking-tighter text-light uppercase">Monad Testnet Metrics</h2>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <StatCard 
-            icon={<Zap size={22} />}
-            label="Average Uptime"
-            value={stats.uptime}
-            sub="ZERO DOWNTIME OPERATIONS"
+            icon={<Shield size={20} />}
+            label="Total Stake"
+            value={stats.votingPower}
+            sub="NET VOTING POWER"
           />
           <StatCard 
-            icon={<Activity size={22} />}
-            label="Network Weight"
-            value={stats.totalDelegation}
-            sub="COMMUNITY DELEGATED"
+            icon={<TrendingUp size={20} />}
+            label="Estimated APY"
+            value={stats.estimatedAPY}
+            sub="NETWORK REWARDS"
           />
           <StatCard 
-            icon={<Globe size={22} />}
-            label="Nodes Active"
-            value={stats.ecosystems}
-            sub="GLOBAL CLUSTER SITES"
+            icon={<Users size={20} />}
+            label="Delegators"
+            value={stats.delegators.toString()}
+            sub="ACTIVE BACKERS"
+          />
+          <StatCard 
+            icon={<Percent size={20} />}
+            label="Commission"
+            value={stats.commission}
+            sub="LOWEST FEE TIER"
           />
         </div>
       </section>
@@ -258,7 +247,7 @@ function StatCard({ icon, label, value, sub }: { icon: React.ReactNode, label: s
   return (
     <motion.div 
       whileHover={{ y: -5 }}
-      className="flex flex-col items-center lg:items-start group transition-all duration-300"
+      className="p-8 rounded-sm border border-white/5 bg-white/[0.01] backdrop-blur-md relative overflow-hidden group transition-all duration-300 hover:border-primary/30"
     >
       <div className="flex items-center gap-4 mb-4">
         <div className="text-primary group-hover:scale-110 transition-transform duration-500">
@@ -266,7 +255,7 @@ function StatCard({ icon, label, value, sub }: { icon: React.ReactNode, label: s
         </div>
         <span className="text-[10px] uppercase tracking-[0.3em] text-primary/60 font-black">{label}</span>
       </div>
-      <div className="text-5xl font-black italic tracking-tighter text-light mb-2 group-hover:text-primary transition-colors uppercase leading-none">{value}</div>
+      <div className="text-4xl font-black italic tracking-tighter text-light mb-2 group-hover:text-primary transition-colors uppercase leading-none">{value}</div>
       <div className="text-[10px] text-white/20 font-bold uppercase tracking-[0.2em]">{sub}</div>
     </motion.div>
   );
