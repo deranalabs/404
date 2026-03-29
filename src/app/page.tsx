@@ -5,6 +5,7 @@ import { Activity, Database, Shield, Zap, Menu, X, Terminal, Globe, Cpu, ArrowRi
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import HubNavigator from '@/components/HubNavigator';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,10 +24,15 @@ export default function Home() {
       <div className="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/10 rounded-full blur-[120px] pointer-events-none animate-pulse" />
       
       {/* Navigation */}
-      <nav className={`relative z-50 flex justify-between items-center px-6 md:px-12 py-5 transition-all duration-300 sticky top-0 ${scrolled ? 'bg-dark/90 backdrop-blur-xl border-b border-white/5' : 'bg-transparent'}`}>
-        <div className="flex items-center gap-4 group cursor-pointer">
-          <div className="w-10 h-10 bg-primary flex items-center justify-center font-black text-dark rounded-sm italic text-xl shadow-[0_0_20px_rgba(3,251,173,0.3)] group-hover:scale-105 transition-transform">
-            404
+      <nav className={`relative z-50 flex justify-between items-center px-6 md:px-12 py-4 transition-all duration-300 sticky top-0 ${scrolled ? 'bg-dark/90 backdrop-blur-xl border-b border-white/5' : 'bg-transparent'}`}>
+        <div className="flex items-center gap-3 group cursor-pointer">
+          <div className="relative w-12 h-12 overflow-hidden rounded-sm shadow-[0_0_20px_rgba(3,251,173,0.2)]">
+            <Image 
+              src="/logo.png" 
+              alt="404Labs Logo" 
+              fill
+              className="object-cover group-hover:scale-110 transition-transform duration-500"
+            />
           </div>
           <div className="flex flex-col leading-none">
             <span className="text-xl font-black tracking-tighter uppercase">NotFound<span className="text-primary italic">Labs</span></span>
@@ -124,7 +130,7 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* New Visual Element */}
+          {/* Decorative Visual Element */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -152,7 +158,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats Section with Clear Separation */}
+      {/* Stats Section */}
       <section className="relative z-10 px-6 md:px-8 py-12 max-w-7xl mx-auto border-y border-white/5 bg-white/[0.01]">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
           <StatCard 
@@ -191,7 +197,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-20">
           <div className="max-w-sm">
              <div className="flex items-center gap-4 mb-8">
-                <div className="w-12 h-12 bg-white flex items-center justify-center font-black text-dark rounded-sm italic text-lg shadow-xl">404</div>
+                <div className="relative w-12 h-12 bg-white rounded-sm overflow-hidden shadow-xl">
+                  <Image src="/logo.png" alt="404Labs Logo" fill className="object-cover" />
+                </div>
                 <div className="flex flex-col">
                   <span className="text-2xl font-black tracking-tighter uppercase text-light">NotFound<span className="text-primary italic">Labs</span></span>
                   <span className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Est. 2026</span>
