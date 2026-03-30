@@ -13,14 +13,14 @@ export default function NetworkHealth() {
   }, []);
 
   return (
-    <section className="px-5 md:px-8 py-12 md:py-16 max-w-7xl mx-auto">
+    <section className="px-5 md:px-8 pb-12 md:pb-16 max-w-7xl mx-auto">
       <div className="flex flex-col lg:flex-row items-center gap-8 md:gap-10 bg-white/[0.02] border border-white/5 p-5 md:p-8 rounded-sm relative overflow-hidden">
         <div className="absolute top-0 left-0 w-1 h-full bg-primary" />
 
         <div className="flex-1">
-          <h2 className="text-2xl md:text-3xl font-black tracking-tighter mb-3 uppercase">Current Network Status</h2>
+          <h2 className="text-2xl md:text-3xl font-black tracking-tighter mb-3 uppercase">Infrastructure Footprint</h2>
           <p className="text-white/40 font-light mb-6 max-w-xl leading-relaxed">
-            404Labs is focused on stable validator and node operations, with an emphasis on reliability, consistency, and transparent infrastructure progress across its current network footprint.
+            404Labs is focused on stable validator and node operations, with an emphasis on reliability, consistency, and transparent infrastructure progress across its current footprint.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">

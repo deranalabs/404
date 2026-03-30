@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowRight, Terminal, Cpu } from 'lucide-react';
+import CorePillars from '@/components/CorePillars';
 import HubNavigator from '@/components/HubNavigator';
 import NetworkHealth from '@/components/NetworkHealth';
 import VisionGrid from '@/components/VisionGrid';
@@ -40,11 +41,11 @@ export default function Home() {
         </div>
 
         <div className="hidden lg:flex gap-10 text-[10px] font-bold uppercase tracking-[0.2em] text-white/50">
-          <a href="#validator" className="hover:text-primary transition-all relative group py-2">
-            Validator
+          <a href="#pillars" className="hover:text-primary transition-all relative group py-2">
+            Overview
             <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-primary transition-all group-hover:w-full" />
           </a>
-          <a href="#live" className="hover:text-primary transition-all relative group py-2">Infrastructure</a>
+          <a href="#proof" className="hover:text-primary transition-all relative group py-2">Proof</a>
           <a href="#roadmap" className="hover:text-primary transition-all relative group py-2">Roadmap</a>
           <a href="/docs" className="hover:text-primary transition-all relative group py-2">Docs</a>
         </div>
@@ -69,12 +70,12 @@ export default function Home() {
           >
             <div className="border border-white/8 bg-white/[0.02] rounded-sm p-4 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.7)]">
               <div className="flex flex-col">
-                <a href="#validator" onClick={() => setIsMenuOpen(false)} className="flex items-center justify-between py-4 border-b border-white/6 text-primary text-sm font-black uppercase tracking-[0.18em]">
-                  <span>Validator</span>
+                <a href="#pillars" onClick={() => setIsMenuOpen(false)} className="flex items-center justify-between py-4 border-b border-white/6 text-primary text-sm font-black uppercase tracking-[0.18em]">
+                  <span>Overview</span>
                   <ArrowRight size={16} />
                 </a>
-                <a href="#live" onClick={() => setIsMenuOpen(false)} className="flex items-center justify-between py-4 border-b border-white/6 text-white/70 hover:text-primary transition-colors text-sm font-black uppercase tracking-[0.18em]">
-                  <span>Infrastructure</span>
+                <a href="#proof" onClick={() => setIsMenuOpen(false)} className="flex items-center justify-between py-4 border-b border-white/6 text-white/70 hover:text-primary transition-colors text-sm font-black uppercase tracking-[0.18em]">
+                  <span>Proof</span>
                   <ArrowRight size={16} />
                 </a>
                 <a href="#roadmap" onClick={() => setIsMenuOpen(false)} className="flex items-center justify-between py-4 border-b border-white/6 text-white/70 hover:text-primary transition-colors text-sm font-black uppercase tracking-[0.18em]">
@@ -107,10 +108,10 @@ export default function Home() {
               Validator • Nodes • Execution
             </div>
             <h1 className="text-3xl sm:text-5xl md:text-6xl xl:text-7xl font-black tracking-tighter leading-[0.95] mb-5 uppercase text-light">
-              High-performance community validator <span className="text-primary text-glow">&</span> Web3 infrastructure
+              Web3 infrastructure, validator systems, and execution <span className="text-primary text-glow">—</span> built to run.
             </h1>
-            <p className="text-base md:text-lg text-white/40 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0 font-light">
-              404Labs builds reliable Web3 infrastructure, validator systems, node operations, and AI-agent execution layers for decentralized networks.
+            <p className="text-base md:text-lg text-white/40 leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0 font-light">
+              404Labs builds reliable infrastructure for decentralized networks, combining validator operations, node systems, and execution layers designed for real-world use.
             </p>
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3">
               <a href="https://testnet.monadvision.com/validator/0x756D4C468F6131d7896AEC8a897865Ae92412b77?tab=Proposed+Blocks" target="_blank" rel="noreferrer" className="px-5 md:px-6 py-3 bg-primary text-dark text-sm font-black rounded-sm border border-primary/70 hover:brightness-110 hover:-translate-y-0.5 transition-all duration-200 inline-flex items-center justify-center gap-2.5 uppercase tracking-[0.14em] shadow-[0_10px_24px_-12px_rgba(3,251,173,0.45)] group">
@@ -146,24 +147,26 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="validator" className="relative z-10 px-5 md:px-8 py-10 md:py-12 max-w-7xl mx-auto border-y border-white/5 bg-white/[0.01]">
-        <div className="mb-10 max-w-3xl">
-          <span className="text-[10px] font-bold text-primary uppercase tracking-[0.4em] mb-2 block">Current network proof</span>
-          <h2 className="text-2xl md:text-3xl font-black tracking-tighter text-light uppercase mb-3">Validator proof</h2>
-          <p className="text-white/40 leading-relaxed font-light">
-            404Labs is actively operating validator infrastructure and full nodes, with current public proof on Monad testnet and a broader focus on long-term infrastructure credibility.
+      <div id="pillars">
+        <CorePillars />
+      </div>
+
+      <section id="proof" className="relative z-10 px-5 md:px-8 py-12 md:py-16 max-w-7xl mx-auto border-t border-white/5">
+        <div className="max-w-3xl mb-10 md:mb-12">
+          <span className="text-[10px] font-bold text-primary uppercase tracking-[0.4em] mb-3 block">Current proof</span>
+          <h2 className="text-2xl md:text-4xl font-black tracking-tighter text-light uppercase mb-4">Live systems, not empty claims</h2>
+          <p className="text-white/40 leading-relaxed font-light max-w-2xl">
+            404Labs is actively operating validator and node infrastructure, with current public proof on Monad testnet and a broader focus on building infrastructure that can grow beyond any single network.
           </p>
-        </div>
-        <div>
-          <a href="https://testnet.monadvision.com/validator/0x756D4C468F6131d7896AEC8a897865Ae92412b77?tab=Proposed+Blocks" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-4 py-2.5 border border-primary/20 bg-primary/[0.06] rounded-sm text-[11px] font-black uppercase tracking-[0.16em] text-primary hover:bg-primary/[0.10] hover:border-primary/35 transition-all duration-200">
-            Open validator on Monad Vision <ArrowRight size={16} />
-          </a>
+          <div className="mt-6">
+            <a href="https://testnet.monadvision.com/validator/0x756D4C468F6131d7896AEC8a897865Ae92412b77?tab=Proposed+Blocks" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-4 py-2.5 border border-primary/20 bg-primary/[0.06] rounded-sm text-[11px] font-black uppercase tracking-[0.16em] text-primary hover:bg-primary/[0.10] hover:border-primary/35 transition-all duration-200">
+              Open validator on Monad Vision <ArrowRight size={16} />
+            </a>
+          </div>
         </div>
       </section>
 
-      <div id="live">
-        <HubNavigator />
-      </div>
+      <HubNavigator />
 
       <NetworkHealth />
 

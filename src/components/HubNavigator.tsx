@@ -6,14 +6,14 @@ import { Shield, Terminal, CheckCircle2, Clock3 } from 'lucide-react';
 const liveItems = [
   {
     title: 'Validator Operations',
-    desc: 'High-performance validator operations with current public proof on Monad testnet.',
+    desc: 'High-performance validator operations with current public proof and active network participation.',
     status: 'LIVE',
-    stats: 'Monad Testnet',
+    stats: 'Public Proof',
     icon: <Shield className="text-primary" />,
   },
   {
-    title: 'Monad Node Infrastructure',
-    desc: 'Reliable full node infrastructure supporting validator performance and network participation.',
+    title: 'Node Infrastructure',
+    desc: 'Reliable full node infrastructure supporting performance, uptime, and consistent validator participation.',
     status: 'LIVE',
     stats: 'Full Node Active',
     icon: <Terminal className="text-primary" />,
@@ -27,10 +27,10 @@ const upcomingItems = [
 
 export default function HubNavigator() {
   return (
-    <section id="hub" className="px-5 md:px-8 py-12 md:py-16 max-w-7xl mx-auto">
+    <section id="hub" className="px-5 md:px-8 pb-10 md:pb-12 max-w-7xl mx-auto">
       <div className="mb-8 md:mb-10">
-        <h2 className="text-[10px] uppercase tracking-[0.2em] text-primary font-bold mb-2">Live capabilities</h2>
-        <p className="text-2xl md:text-3xl font-black tracking-tighter text-light uppercase">Current Operations</p>
+        <h2 className="text-[10px] uppercase tracking-[0.2em] text-primary font-bold mb-2">What is running now</h2>
+        <p className="text-2xl md:text-3xl font-black tracking-tighter text-light uppercase">Validator and Node Systems</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-8">
