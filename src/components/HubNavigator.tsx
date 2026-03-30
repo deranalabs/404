@@ -6,7 +6,7 @@ import { Shield, Terminal, CheckCircle2, Clock3 } from 'lucide-react';
 const liveItems = [
   {
     title: 'Validator Operations',
-    desc: 'High-performance validator operations with current public proof on Monad testnet.'
+    desc: 'High-performance validator operations with current public proof on Monad testnet.',
     status: 'LIVE',
     stats: 'Monad Testnet',
     icon: <Shield className="text-primary" />,
